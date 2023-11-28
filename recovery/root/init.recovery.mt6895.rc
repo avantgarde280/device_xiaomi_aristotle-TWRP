@@ -7,7 +7,6 @@ on init
     setprop sys.usb.controller "11201000.usb0"
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
-    setprop crypto.ready 1
 
 on fs
     install_keyring
@@ -25,6 +24,7 @@ on late-fs
 
 on post-fs
     start boot-hal-1-2
+    start mtk.plpath.utils.link
 
     # Support A/B feature for EMMC and UFS boot region
     wait /dev/block/mmcblk0boot0 2
@@ -48,7 +48,6 @@ on post-fs
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
     exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
-    start mtk.plpath.utils.link
 
 on post-fs-data
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
@@ -91,28 +90,25 @@ service vibratorfeature-hal-service /vendor/bin/hw/vendor.xiaomi.hardware.vibrat
     seclabel u:r:recovery:s0
 
 service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
-    interface android.hardware.gatekeeper@1.0::IGatekeeper default
-    class hal
     user root
     group root
+    oneshot
     disabled
     seclabel u:r:recovery:s0
     
 service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.0-service.mitee
-    class early_hal
     user root
     group root drmrpc
+    oneshot
     disabled
     seclabel u:r:recovery:s0
 
 service vendor.mitee.secureelement-hal_1_2 /vendor/bin/hw/vendor.xiaomi.hardware.secure_element@1.2-service
-    class hal
     user root
     group root secure_element nfc
+    oneshot
+    disabled
     seclabel u:r:recovery:s0
-
-on property:crypto.ready=1
-    start vendor.keymint-mitee
 
 on property:hwservicemanager.ready=true
     start vendor.keymint-mitee
@@ -132,12 +128,12 @@ on property:ro.crypto.state=unencrypted
 on property:twrp.decrypt.done=true
     stop vendor.keymint-mitee
     stop vendor.gatekeeper-1-0
-    vendor.mitee.secureelement-hal_1_2
+    stop vendor.mitee.secureelement-hal_1_2
 
 on property:crypto.ready=0
     stop vendor.keymint-mitee
     stop vendor.gatekeeper-1-0
-    vendor.mitee.secureelement-hal_1_2
+    stop vendor.mitee.secureelement-hal_1_2
 
 on property:twrp.modules.loaded=true
     start vibratorfeature-hal-service

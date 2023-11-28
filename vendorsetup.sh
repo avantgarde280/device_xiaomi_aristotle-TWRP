@@ -22,7 +22,7 @@ FOX_MANIFEST_ROOT=$(gettop)
 if [ -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox.mk ]; then
     if [ -z "$TW_DEFAULT_LANGUAGE" ]; then
         unset TW_DEFAULT_LANGUAGE
-        export TW_DEFAULT_LANGUAGE="id_ID"
+        export TW_DEFAULT_LANGUAGE="id"
     fi
 
     # Build

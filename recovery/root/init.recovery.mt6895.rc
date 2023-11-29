@@ -93,7 +93,6 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
     group root
-    oneshot
     disabled
     seclabel u:r:recovery:s0
     

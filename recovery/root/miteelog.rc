@@ -1,4 +1,5 @@
 service miteelog /vendor/bin/miteelog
+    class core
     user root
     group root
     disabled

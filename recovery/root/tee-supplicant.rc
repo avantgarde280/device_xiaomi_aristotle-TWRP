@@ -1,9 +1,7 @@
 # For MTK DRM integration:
 service tee-supplicant /vendor/bin/tee-supplicant
-    class core
     user root
     group root
-    capabilities SYS_RAWIO
     disabled
     oneshot
     seclabel u:r:recovery:s0

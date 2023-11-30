@@ -1,6 +1,6 @@
 <!--
     Input:
-        manifest_sensor_hidl_v2.xml
+        manifest_sensor_hidl_v2_1.xml
         manifest_audio.xml
         manifest_dsds.xml
         manifest_radioconfig.xml
@@ -21,18 +21,14 @@
         manifest_apmonitor.xml
         manifest_nwk_opt.xml
         manifest_composer.xml
-        manifest_cameraprovider.xml
         manifest_target_level_s.xml
         manifest.xml
         manifest_nfc.xml
-        manifest_eSE.xml
-        manifest_vendor.xiaomi.hardware.mlipay.xml
+        manifest_eSE_V1.2.xml
         manifest_vendor.xiaomi.hardware.mtdservice.xml
-        manifest_vendor.xiaomi.hardware.tidaservice.xml
-        manifest_vendor.xiaomi.hardware.vsimapp.xml
         manifest_vendor.xiaomi.hardware.mfidoca.xml
-        manifest_displayfeature.xml
-        manifest.xml
+        manifest_vendor.xiaomi.hardware.mlipay.xml
+        manifest_vendor.xiaomi.hardware.soterservice.xml
         manifest.xml
         manifest.xml
 -->
@@ -40,12 +36,12 @@
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
-        <version>7.0</version>
+        <version>7.1</version>
         <interface>
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@7.0::IDevicesFactory/default</fqname>
+        <fqname>@7.1::IDevicesFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
@@ -86,16 +82,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IBootControl/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.camera.provider</name>
-        <transport>hwbinder</transport>
-        <version>2.6</version>
-        <interface>
-            <name>ICameraProvider</name>
-            <instance>internal/0</instance>
-        </interface>
-        <fqname>@2.6::ICameraProvider/internal/0</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.gatekeeper</name>
@@ -234,28 +220,26 @@
     <hal format="hidl">
         <name>android.hardware.secure_element</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.2</version>
         <interface>
             <name>ISecureElement</name>
             <instance>SIM1</instance>
             <instance>SIM2</instance>
             <instance>eSE1</instance>
         </interface>
-        <fqname>@1.0::ISecureElement/SIM1</fqname>
-        <fqname>@1.0::ISecureElement/SIM2</fqname>
-        <fqname>@1.0::ISecureElement/eSE1</fqname>
         <fqname>@1.2::ISecureElement/SIM1</fqname>
         <fqname>@1.2::ISecureElement/SIM2</fqname>
+        <fqname>@1.2::ISecureElement/eSE1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <version>2.1</version>
         <interface>
             <name>ISensors</name>
             <instance>default</instance>
         </interface>
-        <fqname>@2.0::ISensors/default</fqname>
+        <fqname>@2.1::ISensors/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
@@ -551,12 +535,12 @@
     <hal format="hidl">
         <name>vendor.mediatek.hardware.pq</name>
         <transport>hwbinder</transport>
-        <version>2.13</version>
+        <version>2.15</version>
         <interface>
             <name>IPictureQuality</name>
             <instance>default</instance>
         </interface>
-        <fqname>@2.13::IPictureQuality/default</fqname>
+        <fqname>@2.15::IPictureQuality/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.mediatek.hardware.videotelephony</name>
@@ -577,26 +561,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.0::INqNfc/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.sla.service</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ISlaService</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::ISlaService/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.xiaomi.hardware.displayfeature</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDisplayFeature</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IDisplayFeature/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mfidoca</name>
@@ -621,32 +585,22 @@
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mtdservice</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.3</version>
         <interface>
             <name>IMTService</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.2::IMTService/default</fqname>
+        <fqname>@1.3::IMTService/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.xiaomi.hardware.tidaservice</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>ITidaService</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::ITidaService/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.xiaomi.hardware.vsimapp</name>
+        <name>vendor.xiaomi.hardware.soterservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IVSIMService</name>
+            <name>ISoter</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IVSIMService/default</fqname>
+        <fqname>@1.0::ISoter/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hidl.minet</name>

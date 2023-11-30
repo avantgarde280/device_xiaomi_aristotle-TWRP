@@ -25,7 +25,7 @@ void vendor_load_properties()
     for (const string &prop : prop_partitions)
     {
         property_override(string("ro.product.") + prop + string("brand"), "Xiaomi");
-        property_override(string("ro.product.") + prop + string("name"), "aristotle");
+        property_override(string("ro.product.") + prop + string("name"), "aristotle_global");
         property_override(string("ro.product.") + prop + string("device"), "aristotle");
         property_override(string("ro.product.") + prop + string("model"), "2306EPN60G");
         property_override(string("ro.product.") + prop + string("marketname"), "Xiaomi 13T");

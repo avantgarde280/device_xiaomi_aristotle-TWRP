@@ -26,13 +26,13 @@ Display | 1220 x 2712 pixels, 6.67 inches, 60/120/144 hz
 Works:
 
 - [X] ADB
-- [-] Decryption (Android 13)
+- [] Decryption (Android 13)
 - [X] Display
 - [X] Fasbootd
 - [X] Flashing
 - [X] MTP
 - [X] Sideload
-- [?] USB OTG
+- [X] USB OTG
 - [X] Vibrator
 
 ## Compile
